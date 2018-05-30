@@ -174,3 +174,118 @@ Test::valid
 ## IteratorAggregate 聚合式迭代器
 
 IteratorAggregate接口继承了Traversable,主要用来创建外部迭代器的接口,只需要实现一个getIterator方法即可
+
+```
+class Test implements IteratorAggregate {
+    protected $name = 'one';
+    public $age = 18;
+
+    public function getIterator(){
+        return new ArrayIterator($this);
+    }
+}
+
+$obj = (new Test)->getIterator();
+$obj->rewind();
+while($obj->valid()){
+    echo $obj->current() . PHP_EOL;
+    $obj->next();
+}
+
+//输出
+18
+```
+
+```
+class Test implements IteratorAggregate {
+    private $_data;
+
+    public function __construct(){
+        $this->_data = ['one' , 'two'];
+    }
+
+    public function getIterator(){
+        return new ArrayIterator($this->_data);
+    }
+}
+
+$obj = (new Test)->getIterator();
+$obj->rewind();
+while($obj->valid()){
+    echo $obj->current() . PHP_EOL;
+    $obj->next();
+}
+
+//输出 one two
+
+```
+
+输出内容取决于给`new ArrayIterator`注入的数组,`ArrayIterator`继承于`Iterator`,实现了`Iterator`中的几个方法
+
+## Serializable 序列化
+
+不论何时，只要有实例需要被序列化，`serialize()`方法都将被调用。它将不会调用 `__destruct()` 或有其他影响，除非程序化地调用此方法当数据被反序列化时，类将被感知并且调用合适的 `unserialize()` 方法而不是调用 `__construct()`
+
+```
+class MyClass implements Serializable {
+    private $data;
+    
+    public function __construct($data) {
+        $this->data = $data;
+    }
+    
+    public function serialize() {
+        return serialize($this->data);
+    }
+    
+    public function unserialize($data) {
+        $this->data = unserialize($data);
+    }
+}
+$a = new MyClass('hello , world');
+var_dump($a->serialize());
+
+//输出
+string(21) "s:13:"hello , world";"
+```
+
+## Generator 生成器
+
+`Generator`实现了`Iterator`,但是他无法被继承,同时也生成实例,由于实现了`Iterator`,它便有了和`Iterator`相同的功能,`Generator`的语法主要来自于关键字yield,会消耗更少的内存
+
+```
+$start_time = microtime(true);
+function xrange($num = 100000){
+    for($i = 0 ; $i < $num ; ++ $i){
+        yield $i;
+    }
+}
+
+$generator = xrange();
+foreach ($generator as $key => $value) {
+    echo $key . '=' . $value . PHP_EOL;
+}
+echo 'memory:' . memory_get_usage() . ' time:' . (microtime(true) - $start_time) . PHP_EOL;
+
+//输出memory:229056 time:0.25725412368774
+```
+
+```
+$start_time = microtime(true);
+function xrange2($num = 100000){
+    $arr = [];
+    for ($i=0; $i <$num ; ++$i) { 
+        array_push($arr , $i);
+    }
+    return $arr;
+}
+
+$arr = xrange2();
+foreach ($arr as $key => $value) {
+    # code...
+}
+echo 'memory:' . memory_get_usage() . ' time:' . (microtime(true) - $start_time);
+
+//输出
+memory:14877528 time:0.039144992828369
+```
