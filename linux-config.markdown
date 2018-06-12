@@ -1,6 +1,6 @@
 ---
 
-laravel上传简单配置nginx
+laravel上传简单配置nginx及laravel配置
 
 ---
 
@@ -49,4 +49,30 @@ server {
 ```
 
 修改之后重启nginx`nginx -s reload`
+
+## github拉取部署时注意事项
+
+我们在上传代码时都会在`.gitignore`里记录让git忽略上传的文件,如依赖文件`vendor`文件以及配置文件`.env`等，所以如果在服务器上直接拉取代码记得执行以下操作
+
+```
+# 拷贝远端文件
+git clone https://github.com/laravel/laravel.git
+# 进入到项目文件执行生成vendor文件解决依赖问题
+composer install
+# 更新compser
+composer update
+# 建立.env文件
+cp .env.example .env
+# env.example中默认没有app key,所以我们在.env中生成新的app key
+php artisan key:generate
+# 修改.env中的配置项
+vim .env
+# 执行数据迁移
+php artisan migrate
+# 执行数据填充
+php artisan db:seed
+```
+
+数据库中非数据填充生成的数据任然需要手动进行拷贝
+
 
