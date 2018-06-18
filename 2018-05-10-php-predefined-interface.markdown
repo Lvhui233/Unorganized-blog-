@@ -1,7 +1,14 @@
 ---
-
-预定义接口
-
+layout:     post
+title:      "预定义接口 "
+subtitle:   "prdfefined interface"
+date:       2018-05-10 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-os-metro.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - php
 ---
 
 ## Closure 闭包

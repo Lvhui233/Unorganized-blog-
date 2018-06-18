@@ -1,7 +1,14 @@
 ---
-
-流程控制
-
+layout:     post
+title:      "流程控制 "
+subtitle:   "declare"
+date:       2018-05-14 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-os-metro.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - php
 ---
 
 ## declare

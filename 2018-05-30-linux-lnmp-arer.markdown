@@ -1,7 +1,14 @@
 ---
-
-linux下lnmp环境搭建
-
+layout:     post
+title:      "linux下lnmp环境搭建 "
+subtitle:   "lnmp build on linux"
+date:       2018-05-30 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-os-metro.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - lnmp
 ---
 
 ## 服务器环境

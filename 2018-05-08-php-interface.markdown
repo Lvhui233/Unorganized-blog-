@@ -1,7 +1,14 @@
 ---
-
-类常量,接口
-
+layout:     post
+title:      "类常量与接口"
+subtitle:   "class constants and interface"
+date:       2018-05-08 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-os-metro.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - php
 ---
 
 ## 类常量
