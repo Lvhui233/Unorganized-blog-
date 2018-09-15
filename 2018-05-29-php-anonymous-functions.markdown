@@ -1,7 +1,14 @@
 ---
-
-匿名函数
-
+layout:     post
+title:      "匿名函数 "
+subtitle:   "closure function"
+date:       2018-05-29 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-os-metro.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - php
 ---
 
 匿名函数也叫闭包函数,允许临时创建一个没有名称的临时函数,目前是通过Closure类实现的
