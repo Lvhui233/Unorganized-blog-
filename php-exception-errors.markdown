@@ -104,7 +104,7 @@ log_errors = On
 ;设置每条日志项的最大长度(可以不设置)
 log_errors_max_len = 1024
 ;错误日志位置
-errors_log = /var/php_errors.log
+error_log = /var/php_errors.log
 ```
 
 生产环境配置：
@@ -120,7 +120,7 @@ log_errors = On
 ;设置每条日志项的最大长度(可以不设置)
 log_errors_max_len = 1024
 ;错误日志位置
-errors_log = /var/php_errors.log
+error_log = /var/php_errors.log
 ```
 
 ### 全局错误处理程序

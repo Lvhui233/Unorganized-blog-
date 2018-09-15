@@ -1,8 +1,11 @@
 ---
 
 ajax长轮询与websocket
+6.14
 
 ---
+
+## ajax长轮询
 
 html代码
 
@@ -86,3 +89,5 @@ php代码
     }     
 ?>  
 ```
+
+## websocket
